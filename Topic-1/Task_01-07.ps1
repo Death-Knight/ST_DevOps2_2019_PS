@@ -1,4 +1,4 @@
-﻿# ST_DevOps2_2019_Viktar_Tsybulko_1_2
+﻿# ST_DevOps2_2019_Viktar_Tsybulko_2_1
 
 #1.	Получите справку о командлете справки
 Get-Help Get-Help
