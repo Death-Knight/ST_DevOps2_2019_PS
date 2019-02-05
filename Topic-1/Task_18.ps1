@@ -4,7 +4,7 @@
 # Буду делать с экселем, потому что в ворде открыто много документов, не охота переоткрывать их все,
 # пока пишу и тестирую скрипт.
 
-#Совсем жесткий вариант
+# Вариант 1
 cls
 [String]$ExcelDocument = "c:\temp\new.xlsx"
 Invoke-Item -Path $ExcelDocument
@@ -16,9 +16,9 @@ Invoke-Item -Path $ExcelDocument
 $CurrentExcelProcesses = Get-Process -Name excel
 Pause "Excel document opened!"
 $CurrentExcelProcesses.Kill()
-# конец жесткого варианта
+# конец 
 
-
+# Вариант 2
 #Более интересный подход (через COM-объекты можно полностью управлять приложением)
 cls
 [String]$ExcelDocument = "c:\temp\new.xlsx"
@@ -26,28 +26,15 @@ $Excel = New-Object -ComObject Excel.Application
 $Excel.Visible = $True
 $ExBook = $Excel.Workbooks.Open($ExcelDocument)
 
-
-#$sheet = $Excel.cells(3,3).
 $Exsheet = $Excel.WorkSheets.Item(1)
-$Exsheet.Cells(4,1)
 
-$ExCell = $Exsheet.ToString()
-$ExCell
+$ExCell = $Exsheet.Cells(1,2)
+$ExCell.Value2()
 
-
-#$Excel.ActiveWorkbook
-
+#$ExCell2 = $Exsheet.Cells(3,3)
+#$ExCell2.Value2() = "Done!"
+#$Excel.Workbooks.Application.Save()
+#$Excel.Save()
+Pause
 $Excel.Quit()
-
-
-
-
-
-
-[String]$WordDocument = "C:\temp\new.docx"
-Invoke-Item -Path $WordDocument
-
-$CurrentTime = Get-Date
-
-$CurrentWordProcesses = Get-Process -Name WINWORD
-$CurrentWordProcesses
+# конец
