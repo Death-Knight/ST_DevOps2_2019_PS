@@ -5,6 +5,8 @@
 cls
 Get-Service | Sort-Object Name
 
+Get-Service w* | Sort-Object Status
+
 Get-Service | Sort-Object Status -Descending 
 
 $ser = Get-Service
