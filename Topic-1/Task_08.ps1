@@ -6,3 +6,4 @@ cls
 Set-Alias -Name info -Value Get-Host
 Get-Alias info
 info
+

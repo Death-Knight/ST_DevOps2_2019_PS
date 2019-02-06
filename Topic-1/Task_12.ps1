@@ -16,3 +16,4 @@ $ser[10].Status
 Get-Service | Where-Object {$_.Status -eq "Stopped"}
 
 Get-Service wuauserv | Select Displayname,Status,Start,ServiceName,Can*
+

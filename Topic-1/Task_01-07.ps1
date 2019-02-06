@@ -26,3 +26,4 @@ Get-Command *object* -CommandType Cmdlet
 
 #7.	Получите список всех псевдонимов
 Get-Alias
+

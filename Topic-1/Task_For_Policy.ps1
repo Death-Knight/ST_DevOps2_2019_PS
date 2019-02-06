@@ -8,3 +8,4 @@ Set-ExecutionPolicy -ExecutionPolicy Restricted
 #for run my scripts
 cls
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+

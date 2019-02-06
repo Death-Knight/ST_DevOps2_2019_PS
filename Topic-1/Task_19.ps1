@@ -12,3 +12,4 @@ $summ = $summ + 3*$i
 "Step " + $i + ". Summ total: " + $summ
 }
 
+

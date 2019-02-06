@@ -6,3 +6,4 @@ cls
 Get-Process | Get-Member -MemberType Method | Sort-Object Name
 "===Separator==="
 Get-Process | Get-Member -MemberType Properties
+

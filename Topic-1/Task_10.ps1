@@ -7,3 +7,4 @@ $str = "DevOps"
 $str | Get-Member -MemberType Method | Sort-Object Name
 "===Separator==="
 $str | Get-Member -MemberType Properties | Sort-Object Name
+

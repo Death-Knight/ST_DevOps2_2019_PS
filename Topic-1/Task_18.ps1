@@ -38,3 +38,4 @@ $ExCell.Value2()
 Pause
 $Excel.Quit()
 # конец
+

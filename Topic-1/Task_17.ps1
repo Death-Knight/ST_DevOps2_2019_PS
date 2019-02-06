@@ -6,3 +6,4 @@ cls
 $exp = Get-Process explorer
 "Start Time: " + $exp.StartTime + " or " + $exp.StartTime.DateTime
 "Start Day: " + $exp.StartTime.DayOfWeek
+

@@ -16,5 +16,3 @@ function Summa ([int]$n)
 
 Summa(6)
 
-
-
