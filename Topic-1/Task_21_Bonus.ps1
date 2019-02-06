@@ -38,6 +38,7 @@ $result
 #[byte][char]'a'
 #[byte][char]'z'
 
+
 #$b = $EncodedSring.ToCharArray()
 #$b[0] = "Z"
 #$b[0]
