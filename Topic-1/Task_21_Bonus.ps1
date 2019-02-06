@@ -1,6 +1,6 @@
-# ST_DevOps2_2019_Viktar_Tsybulko_2_1
+п»ї# ST_DevOps2_2019_Viktar_Tsybulko_2_1
 #
-#21 Расшифровка http://www.pythonchallenge.com/pc/def/map.html
+#21 Р Р°СЃС€РёС„СЂРѕРІРєР° http://www.pythonchallenge.com/pc/def/map.html
 # 
 # K -> M
 # O -> Q
@@ -8,7 +8,7 @@
 #
 # g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr'q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj.
 #
-# алгоритм расшифровки без кода реализации, признаюсь - подглядел, дальше cам
+# Р°Р»РіРѕСЂРёС‚Рј СЂР°СЃС€РёС„СЂРѕРІРєРё Р±РµР· РєРѕРґР° СЂРµР°Р»РёР·Р°С†РёРё, РїСЂРёР·РЅР°СЋСЃСЊ - РїРѕРґРіР»СЏРґРµР», РґР°Р»СЊС€Рµ cР°Рј
 
 cls
 $EncodedSring = "g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr'q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj."
@@ -50,11 +50,11 @@ $result
 
 
 #$EncodedSring.insert(0,"!").remove(1,1)
-# рабочий способ замены буквы в строке
+# СЂР°Р±РѕС‡РёР№ СЃРїРѕСЃРѕР± Р·Р°РјРµРЅС‹ Р±СѓРєРІС‹ РІ СЃС‚СЂРѕРєРµ
 
 #if ($EncodedSring[$i] -ne (" " -or "." -or "'" -or "(" -or ")"))
-# так почему-то не работает ...
-# поэтому перейдем на оператор switch
+# С‚Р°Рє РїРѕС‡РµРјСѓ-С‚Рѕ РЅРµ СЂР°Р±РѕС‚Р°РµС‚ ...
+# РїРѕСЌС‚РѕРјСѓ РїРµСЂРµР№РґРµРј РЅР° РѕРїРµСЂР°С‚РѕСЂ switch
 
 #[byte][char]'a'
 #[byte][char]'z'

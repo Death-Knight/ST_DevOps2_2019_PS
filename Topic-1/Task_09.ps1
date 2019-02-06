@@ -1,6 +1,6 @@
-# ST_DevOps2_2019_Viktar_Tsybulko_2_1
+п»ї# ST_DevOps2_2019_Viktar_Tsybulko_2_1
 
-#9.	Просмотреть список методов и свойств объекта типа процесс
+#9.	РџСЂРѕСЃРјРѕС‚СЂРµС‚СЊ СЃРїРёСЃРѕРє РјРµС‚РѕРґРѕРІ Рё СЃРІРѕР№СЃС‚РІ РѕР±СЉРµРєС‚Р° С‚РёРїР° РїСЂРѕС†РµСЃСЃ
 
 cls
 Get-Process | Get-Member -MemberType Method | Sort-Object Name

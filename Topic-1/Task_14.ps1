@@ -1,6 +1,6 @@
-# ST_DevOps2_2019_Viktar_Tsybulko_2_1
+п»ї# ST_DevOps2_2019_Viktar_Tsybulko_2_1
 
-#14.	Узнайте, какой язык установлен для UI Windows
+#14.	РЈР·РЅР°Р№С‚Рµ, РєР°РєРѕР№ СЏР·С‹Рє СѓСЃС‚Р°РЅРѕРІР»РµРЅ РґР»СЏ UI Windows
 
 cls
 Get-Culture
