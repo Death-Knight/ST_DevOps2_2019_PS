@@ -2,10 +2,9 @@
 # Use with admin rights
 
 #defaul policy
-cls
+Clear-Host
 Set-ExecutionPolicy -ExecutionPolicy Restricted
 
 #for run my scripts
-cls
+Clear-Host
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted
-
