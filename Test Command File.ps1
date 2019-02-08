@@ -64,3 +64,11 @@ Get-Member $fo
 
 Get-Item C:\TEMP | Get-ChildItem -File | Where-Object {$_.Name -notlike "*.tmp"}
 Get-Item C:\TEMP | Get-ChildItem -Directory
+
+get-help ConvertTo-Html -Examples
+Get-EventLog -LogName "Windows PowerShell" | ConvertTo-Html  C:\temp\pslog.htm
+
+Get-History | Get-Member
+Get-History -Count 200
+Get-History | Format-List -Property * 
+Get-History -ID 7 -Count 5
