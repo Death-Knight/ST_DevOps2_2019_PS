@@ -2,4 +2,4 @@
 # 
 #10.	Сохранить в XML -файле историческую информацию о командах выполнявшихся в текущем сеансе работы PS.
 
-Get-History | ConvertTo-Html > C:\temp\history.html 
+Get-History | Export-Clixml -Path "c:\TEMP\history.xml"

@@ -3,5 +3,6 @@
 #11.	Загрузить данные из полученного в п.10 xml-файла
 # и вывести в виде списка информацию о каждой записи, в виде 5 любых (выбранных Вами) свойств.
 
-$p = Get-Content -Path C:\temp\history.html
+$myHistory = Import-Clixml -Path "c:\TEMP\history.xml"
 
+$myHistory | select ID, CommandLine, StartExecutionTime, ExecutionStatus, EndExecutionTime | Format-List

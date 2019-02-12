@@ -72,3 +72,8 @@ Get-History | Get-Member
 Get-History -Count 200
 Get-History | Format-List -Property * 
 Get-History -ID 7 -Count 5
+
+ConvertTo-Xml -As "Document" -InputObject Get-Process | Out-File "C:\temp\h.xml" 
+Export-Clixml -InputObject (Get-History) 
+
+"This is a test" | Export-Clixml -Path c:\TEMP\sample.xml

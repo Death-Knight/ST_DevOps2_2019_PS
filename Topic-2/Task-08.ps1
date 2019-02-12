@@ -1,5 +1,6 @@
 # ST_DevOps2_2019_Viktar_Tsybulko_2_2
 # 
-#1.	Просмотреть содержимое ветви реeстра HKCU
+#8.	Подсчитать размер занимаемый файлами в папке C:\windows (и во всех подпапках) за исключением файлов *.tmp
 
-Get-ChildItem -Path HKCU:
+Get-ChildItem -Path "C:\Windows" -Recurse -Exclude "*.tmp" -Force `
+    -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum
