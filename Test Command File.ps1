@@ -77,3 +77,29 @@ ConvertTo-Xml -As "Document" -InputObject Get-Process | Out-File "C:\temp\h.xml"
 Export-Clixml -InputObject (Get-History) 
 
 "This is a test" | Export-Clixml -Path c:\TEMP\sample.xml
+
+Get-HotFix | Get-Member
+
+Get-History | Export-Clixml -Path "c:\TEMP\history.xml"
+$myHistory = Import-Clixml -Path "c:\TEMP\history.xml"
+$myHistory | Select-Object ID, CommandLine, StartExecutionTime, ExecutionStatus, EndExecutionTime | Format-List
+
+Get-HotFix | Export-Csv -Path "c:\TEMP\hf.csv"
+$myHistory = Import-Csv -Path "c:\TEMP\hf.csv"
+foreach ($i in $myHistory) {
+    # Write-Host -f "Yellow" $i.CSName, $i.Description, $i.HotFixID, $i.InstalledOn
+    Write-Host -f "Yellow" $i "t\"
+}
+
+Get-History | Export-Clixml -Path "c:\TEMP\history.xml"
+$myHistory = Import-Clixml -Path "c:\TEMP\history.xml"
+$myHistory | Select-Object ID, CommandLine, StartExecutionTime, ExecutionStatus, EndExecutionTime | Format-List
+
+Get-ChildItem -Path HKLM:\SOFTWARE\Microsoft -ErrorAction SilentlyContinue | Export-Clixml -Path C:\temp\key1.xml
+$myHistory = Import-Clixml -Path C:\temp\key1.xml
+# $myHistory
+foreach ($i in $myHistory) {
+    Write-Host -f "Yellow" $i.CSName, $i.Description, $i.HotFixID, $i.InstalledOn
+}
+
+Test-Path $profile

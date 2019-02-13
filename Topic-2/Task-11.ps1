@@ -5,4 +5,4 @@
 
 $myHistory = Import-Clixml -Path "c:\TEMP\history.xml"
 
-$myHistory | select ID, CommandLine, StartExecutionTime, ExecutionStatus, EndExecutionTime | Format-List
+$myHistory | Select-Object ID, CommandLine, StartExecutionTime, ExecutionStatus, EndExecutionTime | Format-List
