@@ -10,7 +10,6 @@
 #
 # алгоритм расшифровки без кода реализации, признаюсь - подглядел, дальше cам
 
-cls
 $EncodedSring = "g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr'q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj."
 $result = ""
 $onof = 0
@@ -42,6 +41,7 @@ for ($i=0; $i -le $EncodedSring.Length - 1; $i++)
         if ($j -gt 122)
         {
             $j = $j - 122 + 96
+            # 96 = a, 122 = z
         }
         $result = $result + [String][char]$j
     }
