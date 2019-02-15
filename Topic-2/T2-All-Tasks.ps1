@@ -38,12 +38,12 @@ Function Is-Numeric ($Value) {
 
 $NumericVars = Get-Variable | Where-Object {Is-Numeric($_.Value) -eq $true}
 $summ = 0
-Write-Output 'Digital Variables Value:'
+Write-Output "Digital Variables Value:"
 foreach ($item in $NumericVars) {
-    Write-Output ($item.Name + '- ' + $item.Value)
+    Write-Output ($item.Name + " - " + $item.Value)
     $summ += $item.Value
 }
-Write-Output ('Total sum of Numeric: ' + $summ)
+Write-Output ("Total sum of Numeric: " + $summ)
 
 #6.	Вывести список из 6 процессов занимающих дольше всего процессор.
 
@@ -53,7 +53,7 @@ Get-Process | Sort-Object CPU -Descending | Select-Object -First 6
 #  разделённые знаком тире, при этом если процесс занимает более 100Mb – 
 #  выводить информацию красным цветом, иначе зелёным.
 
-Get-Process | Sort-Object VirtualMemorySize -Descending| ForEach-Object {
+Get-Process | Sort-Object VirtualMemorySize -Descending | ForEach-Object {
     if (($_.VirtualMemorySize/1024/1024) -gt 100) {
         Write-Host -f "Red" $_.Name, (($_.VirtualMemorySize)/1024/1024), Mb -Separator " - "
     }

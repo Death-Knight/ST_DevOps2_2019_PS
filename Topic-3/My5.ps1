@@ -14,9 +14,9 @@ Function Is-Numeric ($Value) {
 
 $NumericVars = Get-Variable | Where-Object {Is-Numeric($_.Value) -eq $true}
 $summ = 0
-Write-Host Digital Variables Value:
+Write-Output "Digital Variables Value:"
 foreach ($item in $NumericVars) {
-    Write-Host $item.Name, $item.Value -Separator " - "
+    Write-Output ($item.Name + " - " + $item.Value)
     $summ += $item.Value
 }
-Write-Host Total sum of Numeric: $summ
+Write-Output ("Total sum of Numeric: $summ")

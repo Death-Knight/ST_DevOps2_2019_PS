@@ -142,4 +142,52 @@ $t | Where-Object {$_.Name -eq "__NAMESPACE"}
 Get-WmiObject -list -namespace root\cimv2 | ForEach-Object {$_.Name}
 Get-WmiObject -list -Namespace root\Microsoft | ForEach-Object {$_.Name}
 
+Write-Output (Get-WmiObject Win32_LogicalDisk | Select-Object DeviceID, FreeSpace | Format-Table )
 
+Get-WmiObject -List | Where-Object {$_.name -match "net"}
+
+Get-WmiObject Win32_NetworkAdapterConfiguration -Filter IPEnabled=TRUE | Select-Object -Property IPAddress
+
+Get-WmiObject win32_logicaldisk | Select-Object -Property FreeSpace | % {$_.freespace/1GB }
+
+# !!!
+$myStartTime = Get-Date
+$myTestPing = (Test-Connection -ComputerName "tut.bynn" -Count 10 -Quiet)
+# -Quiet пигнует втихую без вывода ошибок
+if ($myTestPing) {
+    $myEndTime = Get-Date
+    $myTotalPingTime = $myEndTime - $myStartTime
+    Write-Output ("Total PING time: " + $myTotalPingTime.Seconds + " sec.")
+    Write-Output ("Total PING time: " + $myTotalPingTime.TotalMilliseconds + " m sec.")    
+}
+else {
+    Write-Output ("Host Unavailable.")
+}
+# !!!
+
+Get-WmiObject -Class Win32_PingStatus -Filter "Address='178.172.160.5'" -ComputerName . `
+    | Select-Object -Property Address,ResponseTime,StatusCode
+
+
+$Query = 'SELECT * FROM Win32_ProcessStartTrace'            
+$action = {            
+    $e = $Event.SourceEventArgs.NewEvent 
+    if($e.ProcessName -eq "excel.exe") {           
+        $fmt = 'ProcessStarted: (ID={0,5}, Parent={1,5}, Time={2,20}, Name="{3}")'            
+        $msg = $fmt -f $e.ProcessId, $e.ParentProcessId, $event.TimeGenerated, $e.ProcessName            
+        Write-host -ForegroundColor Red $msg
+        Write-host -ForegroundColor Green YOOOOOOOOOHOOOOOOOOOOOOO!!!                  
+    }
+}            
+Register-WmiEvent -Query $Query -SourceIdentifier "ExcelStart!" -Action $Action
+
+Get-EventSubscriber
+Get-EventSubscriber -SubscriptionId 2
+Get-EventSubscriber -SourceIdentifier "ExcelStart!"
+Get-EventSubscriber | Unregister-Event
+Unregister-Event -SourceIdentifier
+Unregister-Event -SubscriptionId
+
+(Get-Process | Where-Object {$_.Id -eq $metkaID}).Kill()
+Get-Process | Where-Object {$_.ProcessName -eq "cmd"}
+(Get-Process -Id 6320).Kill()
