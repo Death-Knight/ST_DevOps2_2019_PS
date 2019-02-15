@@ -103,3 +103,43 @@ foreach ($i in $myHistory) {
 }
 
 Test-Path $profile
+
+# --------------------------------------------------------------------------------------
+
+Get-WmiObject | Get-Member
+Get-WmiObject | Get-Command
+Get-WmiObject -list 
+Get-WmiObject  -Class "win32*"
+
+Get-WmiObject -list | Where-Object {$_.Name -eq "__NAMESPACE"}
+
+$o = Get-WmiObject "__NAMESPACE"
+$o
+$t = Get-WmiObject Win32_Service 
+$t.__NAMESPACE[0]
+
+$mycount = 0
+$t = Get-WmiObject -List
+$t.Count
+Start-Sleep 3 
+foreach ($i in $t) {
+    # Write-Output  $i.__NAMESPACE    
+    $mycount++
+}
+Write-Output $mycount
+$t.Count
+
+Get-WmiObject -List | ForEach-Object { Out-File C:\temp\z.txt ($i.__NAMESPACE).ToString() }
+
+$t.Count
+$t = Get-WmiObject -list | ForEach-Object { Write-Output $_.__NAMESPACE }
+$t
+$t.Count
+
+$t | Get-Member 
+$t | Where-Object {$_.Name -eq "__NAMESPACE"}
+
+Get-WmiObject -list -namespace root\cimv2 | ForEach-Object {$_.Name}
+Get-WmiObject -list -Namespace root\Microsoft | ForEach-Object {$_.Name}
+
+
