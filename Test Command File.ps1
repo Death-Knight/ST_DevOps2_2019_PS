@@ -191,3 +191,12 @@ Unregister-Event -SubscriptionId
 (Get-Process | Where-Object {$_.Id -eq $metkaID}).Kill()
 Get-Process | Where-Object {$_.ProcessName -eq "cmd"}
 (Get-Process -Id 6320).Kill()
+
+[String[]] $my_letter = @()
+[Int[]]$my_count = @()
+
+$my_letter.Length
+$my_letter += "z"
+$my_letter.Length
+$my_letter[0]
+
