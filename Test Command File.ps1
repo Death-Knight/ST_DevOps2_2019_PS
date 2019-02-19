@@ -103,6 +103,7 @@ foreach ($i in $myHistory) {
 }
 
 Test-Path $profile
+notepad $profile
 
 # --------------------------------------------------------------------------------------
 
@@ -200,3 +201,10 @@ $my_letter += "z"
 $my_letter.Length
 $my_letter[0]
 
+Get-SmbShare | Where-Object ($_.Name -like "work") # ?
+Get-SmbShare | ForEach-Object { Write-Output $_.Name}
+
+Get-ChildItem "$($Env:WinDir)\Microsoft.Net\Framework" -i mscorlib.dll -r | `
+    ForEach-Object { $_.VersionInfo.ProductVersion }
+
+    
