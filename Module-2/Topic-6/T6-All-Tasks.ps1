@@ -111,13 +111,73 @@ else {
     Write-Output "Share not Deleted!"
 }
 
-# 1.6 in progress.... breaking my teeth...
+# 1.6 in progress.... breaking my teeth... ))
+
+function Check-IPCorrectAdr([string]$IPAddress) {
+    try {
+        [ipaddress]$IPAddress
+        return $true
+    }
+    catch {        
+        return $false
+    }        
+}
+if ((Check-IPCorrectAdr -IPAddress "11213.1231.131.7") -eq $false) {
+    Write-Output "Ups!"
+}
 
 
 # 2.1.	Получить список коммандлетов работы с Hyper-V (Module Hyper-V)
 
 Get-Command -Module Hyper-V
 
+# 2.2.	Получить список виртуальных машин 
+# (запускать все с админ-правами )
 
+Get-VM 
 
+# 2.3.	Получить состояние имеющихся виртуальных машин
 
+Get-VM | Select-Object Name, Status | Sort-Object Name | Format-Table
+
+# получить список виртуальных свичей
+Get-VMSwitch
+
+# 2.4.	Выключить  виртуальную машину
+# выключаем все работающие ВМ
+
+Get-VM | Where-Object {$_.State -eq 'Running'} | Stop-VM
+
+# 2.5.	Создать новую виртуальную машину
+
+$VMName = "My new test virtual machine"
+$VMPath = "D:\VMs\MS"
+
+$VM = @{
+  Name = $VMName 
+  MemoryStartupBytes = 2147483648 # 2GB
+  Generation = 2
+  NewVHDPath = "$VMPath\$VMName\$VMName.vhdx"
+  NewVHDSizeBytes = 10000000000 # 10GB
+  BootDevice = "VHD"
+  Path = "$VMPath\$VMName"
+  SwitchName = "Private Switch Devops 2019"
+}
+
+New-VM @VM
+
+# 2.6.	Создать динамический жесткий диск
+
+New-VHD - Path "$VMPath\$VMName\My new disk.vhdx" -Dynamic -SizeBytes 10GB
+
+# ну и подрубим его к нашей виртуалке
+
+Add-VMHardDiskDrive -VMName $VMName -Path "$VMPath\$VMName\My new disk.vhdx"
+
+# 2.7 Удалить созданную виртуальную машину
+
+Remove-VM $VMName
+
+# не забыть удалить файы ВМ на физическом диске (если необходимо)
+
+Remove-Item -Path "$VMPath\$VMName" -Recurse -Force
