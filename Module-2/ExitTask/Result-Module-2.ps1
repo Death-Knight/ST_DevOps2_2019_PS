@@ -19,7 +19,6 @@ Get-ChildItem -Path "C:\Windows" -Filter *.log | Sort-Object -Descending Name `
 # 4
 
 $myPassport = Get-Credential Administrator
-
 #$Ser = "ALG" #stop
 $Ser = "BFE" #run
 
@@ -35,7 +34,6 @@ $myScript = {
         Write-Host -f "red"  $vmn, $se.Name -Separator "-"
     }
 }
-
 foreach ($vm in $vms) {
     Invoke-Command -ComputerName $vm -ScriptBlock $myScript -Credential $myPassport
 }
@@ -44,23 +42,36 @@ foreach ($vm in $vms) {
 # 5
 
 $sourDir = "C:\ExitTask2"
-$destDir = "C:\BackUp"
+$destDir = "C:\ExitTask2_temp\BackUp"
 $myZIP = "myArchive.zip"
-if (Test-Path -Path $sourDir){
+if (Test-Path -Path $sourDir) {
+    if (!(Test-Path -Path $destDir)) {
+        $d = New-Item -Path $destDir -ItemType Directory
+    }    
     Compress-Archive -Path "$sourDir\*" -DestinationPath "$destDir\$myZIP" -Force
-    Write-Output "Done!"
+    Write-Output "Zip Done!"
 }
 else {
     Write-Output "Nothing to compress. Folder $sourDir not exist!"
+    Break # выходим из скрипта
 }
-
+$extrTime = "_" + (Get-Date -Format "HH-mm-ss-ffff") + "_"
+$extrDir = "C:\ExitTask2_temp\extract"
+$tmps = ($extrDir -split "\\")
 try {
-$extrDir = "C:\extract"
     Expand-Archive -Path "$destDir\$myZIP" -DestinationPath $extrDir -Force
-    Write-Output "Done!"
+    Write-Output "Extract Done!"
 }
 catch {
     Write-Output "Can't create output folder!"
-    Break
+    Break # выходим из скрипта
 }
+# Write-Output "pim"
+$x_files = Get-ChildItem $extrDir
+foreach ($x_file in $x_files) {
+    $x_file.MoveTo($extrDir + "\" + $tmps[-1] + $extrTime + $x_file.BaseName + $x_file.Extension)
+}
+
+
+
 

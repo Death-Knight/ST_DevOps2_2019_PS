@@ -26,7 +26,7 @@ else {
         $internal_end = $A_start
         Write-Output "$internal_start $internal_end"
     }
-    While ($internal_start -lt $internal_end) {
+    While ($internal_start -le $internal_end) {
     if ($internal_start%3 -eq 0) {
         Write-Output "Bingo! ^_^ - $internal_start"
     }      
