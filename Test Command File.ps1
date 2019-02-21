@@ -207,4 +207,5 @@ Get-SmbShare | ForEach-Object { Write-Output $_.Name}
 Get-ChildItem "$($Env:WinDir)\Microsoft.Net\Framework" -i mscorlib.dll -r | `
     ForEach-Object { $_.VersionInfo.ProductVersion }
 
-    
+$scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Definition    
+$scriptPath
